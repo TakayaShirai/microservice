@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: posts-srv # name of the service
+spec: # how does this server actually behaves
+  type: NodePort # type of service -> to expodes pods to outside world
+  selector: # what pods should be exposed to outside (this time: pods labeled "posts")
+    app: posts
+  ports:
+    - name: posts
+      protocol: TCP
+      port: 4000 # Node Port Service, it's fine not to be identical to the targetPort
+      targetPort: 4000 # Pod # the detailed difference between port and targetPort -> see video 78.
+
+      
